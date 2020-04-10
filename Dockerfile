@@ -1,6 +1,6 @@
 FROM ubuntu:latest as builder
 RUN apt-get update && apt-get install unzip curl -y && \
-    curl -fsSLO --compressed "https://github.com/shawn1m/overture/releases/download/v1.6-rc9/overture-linux-amd64.zip" && \
+    curl -fsSLO --compressed "https://github.com/shawn1m/overture/releases/download/v1.6.1/overture-linux-amd64.zip" && \
     mkdir -p /overture && unzip -o "overture-linux-amd64.zip" -d /overture
 FROM alpine:latest
 ENV TZ=Asia/Shanghai
