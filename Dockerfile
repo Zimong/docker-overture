@@ -4,9 +4,9 @@ RUN apt-get update && apt-get install unzip curl -y && \
     mkdir -p /overture && unzip -o "overture-linux-amd64.zip" -d /overture
 FROM alpine:latest
 ENV TZ=Asia/Shanghai
-COPY --from=builder /overture/* /usr/local/etc/overture/
+COPY --from=builder /overture /usr/local/etc/
 RUN set -xe && apk add --no-cache ca-certificates && \
-    mv /etc/overture/overture-linux-amd64 /usr/bin/overture && \
-    chmod a+x /usr/bin/overture
+    mv /usr/local/etc/overture/overture-linux-amd64 /usr/bin/overture && \
+    chmod 755 /usr/bin/overture
 CMD ["/usr/bin/overture", "-c", "/usr/local/etc/overture/config.json"]
 
